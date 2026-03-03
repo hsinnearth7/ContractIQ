@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment
+.env
+.venv/
+venv/
+env/
+
+# Data (keep samples, ignore user uploads)
+data/contracts/uploaded/
+data/chroma_db/
+data/bm25_index.pkl
+
+# Neo4j
+data/neo4j/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# Test / Coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Hypothesis (property-based testing)
+.hypothesis/
+
+# Demo artifacts (generated screenshots & contracts)
+demo/screenshots/
+demo/contracts/
+scripts/capture_screenshots.py
+
+# Personal docs
+*.docx

@@ -1,0 +1,56 @@
+# LLM & RAG Framework
+langchain>=0.3.0
+langchain-openai
+langchain-community
+langchain-experimental
+langchain-neo4j
+langchain-chroma
+openai>=1.50.0
+
+# Vector & Search
+chromadb>=0.5.0
+rank-bm25
+sentence-transformers>=3.0.0
+
+# Document Parsing
+pymupdf>=1.24.0
+pymupdf4llm
+pdfplumber
+python-docx
+
+# v6.0: Docling multi-format (optional — IBM Research-grade parsing)
+# docling>=2.0.0
+
+# Knowledge Graph
+neo4j>=5.20.0
+
+# Evaluation
+ragas>=0.2.0
+datasets
+
+# v8.0: Statistical testing for ablation study
+scipy>=1.11.0
+
+# PDF Generation
+fpdf2>=2.8.0
+
+# Frontend
+streamlit>=1.38.0
+streamlit-agraph
+
+# Configuration & Utilities
+pydantic>=2.0
+pydantic-settings
+python-dotenv
+structlog
+tiktoken
+tenacity
+tqdm
+jinja2
+pyyaml
+
+# Testing
+pytest
+pytest-cov
+pytest-asyncio
+hypothesis

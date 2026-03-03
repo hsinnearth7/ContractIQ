@@ -1,0 +1,202 @@
+# ContractIQ - Mandatory Clauses Definition
+# Each clause has: name, description, keywords (for pre-screening), severity
+
+clauses:
+  - name: Force Majeure
+    description: >
+      A clause that excuses performance when extraordinary events beyond
+      reasonable control prevent a party from fulfilling obligations.
+      Should cover natural disasters, pandemics, war, government actions.
+    keywords:
+      - force majeure
+      - act of god
+      - natural disaster
+      - pandemic
+      - beyond reasonable control
+    severity: critical
+
+  - name: Termination
+    description: >
+      Terms governing how either party can end the agreement,
+      including termination for cause, for convenience, and the
+      required notice periods.
+    keywords:
+      - termination
+      - terminate
+      - cancellation
+      - notice period
+      - cure period
+    severity: critical
+
+  - name: Payment Terms
+    description: >
+      Defines payment obligations including due dates, invoice
+      procedures, late payment penalties, and accepted payment methods.
+    keywords:
+      - payment
+      - invoice
+      - net 30
+      - net 60
+      - due date
+      - late payment
+    severity: critical
+
+  - name: Confidentiality
+    description: >
+      Obligations to protect non-public information shared between
+      parties, including definition of confidential information,
+      permitted disclosures, and survival period.
+    keywords:
+      - confidential
+      - non-disclosure
+      - proprietary
+      - trade secret
+      - confidentiality
+    severity: critical
+
+  - name: Indemnification
+    description: >
+      One party's obligation to compensate the other for losses
+      arising from breaches, negligence, or third-party claims.
+    keywords:
+      - indemnif
+      - hold harmless
+      - defend
+      - losses
+      - damages
+    severity: critical
+
+  - name: Limitation of Liability
+    description: >
+      Caps on financial exposure including aggregate liability limits
+      and exclusions for indirect/consequential damages.
+    keywords:
+      - limitation of liability
+      - liability
+      - aggregate
+      - consequential
+      - indirect damages
+    severity: critical
+
+  - name: Governing Law
+    description: >
+      Specifies which jurisdiction's laws govern the contract
+      and where disputes will be adjudicated.
+    keywords:
+      - governing law
+      - jurisdiction
+      - governed by
+      - laws of
+      - courts
+    severity: critical
+
+  - name: Data Protection
+    description: >
+      Provisions for handling personal data in compliance with
+      privacy regulations (GDPR, CCPA), including breach notification.
+    keywords:
+      - data protection
+      - personal data
+      - privacy
+      - GDPR
+      - CCPA
+      - data breach
+    severity: critical
+
+  - name: Intellectual Property
+    description: >
+      Ownership and licensing terms for intellectual property
+      created or used during the contract, including work-for-hire
+      and pre-existing IP provisions.
+    keywords:
+      - intellectual property
+      - ownership
+      - license
+      - work for hire
+      - copyright
+      - patent
+    severity: major
+
+  - name: Warranty
+    description: >
+      Representations and warranties about the quality of goods
+      or services, including warranty period and remedies.
+    keywords:
+      - warranty
+      - warrants
+      - represents
+      - defect
+      - workmanship
+      - fitness
+    severity: major
+
+  - name: Dispute Resolution
+    description: >
+      Process for resolving disagreements including negotiation,
+      mediation, and arbitration procedures.
+    keywords:
+      - dispute
+      - arbitration
+      - mediation
+      - resolution
+      - negotiation
+    severity: major
+
+  - name: Insurance
+    description: >
+      Required insurance coverages including general liability,
+      professional liability, cyber liability, and workers compensation.
+    keywords:
+      - insurance
+      - coverage
+      - liability insurance
+      - policy
+      - certificate
+    severity: major
+
+  - name: SLA / Service Levels
+    description: >
+      Measurable service level commitments including uptime
+      guarantees, response times, and service credit mechanisms.
+    keywords:
+      - service level
+      - uptime
+      - availability
+      - response time
+      - SLA
+      - service credit
+    severity: minor
+
+  - name: Assignment
+    description: >
+      Conditions under which either party may transfer or assign
+      their rights and obligations under the contract.
+    keywords:
+      - assignment
+      - assign
+      - transfer
+      - successor
+    severity: minor
+
+  - name: Entire Agreement
+    description: >
+      Clause confirming the written contract is the complete
+      agreement superseding prior discussions and agreements.
+    keywords:
+      - entire agreement
+      - supersedes
+      - complete agreement
+      - amendment
+    severity: minor
+
+  - name: Notice Provisions
+    description: >
+      How formal notices must be delivered between parties,
+      including acceptable methods and deemed receipt timing.
+    keywords:
+      - notice
+      - notices
+      - written notice
+      - notify
+      - notification
+    severity: minor

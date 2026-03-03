@@ -1,0 +1,88 @@
+# ContractIQ Knowledge Graph Schema
+
+nodes:
+  - label: Supplier
+    properties:
+      - name
+      - address
+      - industry
+    description: A vendor/supplier company
+
+  - label: Buyer
+    properties:
+      - name
+      - address
+    description: The buying organization
+
+  - label: Contract
+    properties:
+      - agreement_number
+      - contract_type
+      - effective_date
+      - expiration_date
+      - contract_value
+      - status
+    description: A supplier contract document
+
+  - label: Clause
+    properties:
+      - clause_type
+      - title
+      - text_summary
+      - severity
+    description: A contract clause or article
+
+  - label: Obligation
+    properties:
+      - description
+      - due_date
+      - obligation_type
+      - status
+    description: A contractual obligation or commitment
+
+  - label: Party
+    properties:
+      - name
+      - role
+    description: A person involved (signatory, contact)
+
+relationships:
+  - type: SUPPLIES_TO
+    source: Supplier
+    target: Buyer
+    properties:
+      - since
+
+  - type: HAS_CONTRACT
+    source: Supplier
+    target: Contract
+
+  - type: HAS_CLAUSE
+    source: Contract
+    target: Clause
+
+  - type: OBLIGATES
+    source: Clause
+    target: Obligation
+    properties:
+      - obligated_party
+
+  - type: SIGNED_BY
+    source: Contract
+    target: Party
+    properties:
+      - role
+      - date
+
+  - type: PARTIES_TO
+    source: Party
+    target: Contract
+    properties:
+      - role
+
+  - type: SIMILAR_CLAUSE
+    source: Clause
+    target: Clause
+    properties:
+      - similarity_score
+    description: Links similar clauses across contracts
