@@ -1,95 +1,19 @@
-# ContractIQ
+<div align="center">
 
-**AI-Powered Supplier Contract RAG Intelligence Platform** — v6.0
+# ContractIQ — AI-Powered Supplier Contract RAG Intelligence Platform
 
-A platform for analyzing supplier contracts using RAG (Retrieval-Augmented Generation), knowledge graphs, automated compliance checking, and rigorous evaluation methodology.
+**Hybrid retrieval (Vector + BM25 + RRF), cross-encoder reranking, Self-RAG filtering, Neo4j knowledge graph, compliance checking, and rigorous evaluation methodology for supplier contract analysis**
 
-## v6.0 / v8.0 / v9.0 Highlights
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Tests: 80+](https://img.shields.io/badge/tests-80+-blue.svg)](tests/)
+[![Docker](https://img.shields.io/badge/docker-compose-2496ED.svg)](docker-compose.yml)
 
-| Version | Capability | Details |
-|---------|-----------|---------|
-| v6.0 | Golden Dataset | 55 questions x 3 difficulty x 4 evaluation slices |
-| v6.0 | CI/CD Quality Gate | RAGAS threshold enforcement (faithfulness >= 0.85) |
-| v6.0 | Docling Multi-Format | IBM Research-grade document parsing (PDF/DOCX/PPTX/HTML/images) |
-| v6.0 | Resilience | Circuit Breaker + 4-level Graceful Degradation |
-| v8.0 | 6-Layer Ablation | BM25 -> Dense -> Hybrid -> Reranker -> QD -> Self-RAG |
-| v8.0 | Statistical Testing | Wilcoxon signed-rank + 5-fold CV + Occam's razor elbow |
-| v9.0 | 3-Layer Security | Input sanitization + context isolation + output validation |
-| v9.0 | Zero Trust | Role-based access control with deny-by-default classification |
-| v9.0 | Self-RAG | LLM-based relevance verification with keyword fallback |
+</div>
 
-## Features
+> ContractIQ is an AI-powered platform that enables intelligent Q&A, cross-contract comparison, and automated compliance checking for supplier contracts. The system uses a hybrid retrieval pipeline (ChromaDB vector + BM25 keyword + RRF fusion), cross-encoder reranking (ms-marco-MiniLM-L-6-v2), and Self-RAG filtering for high-quality retrieval. A 6-layer ablation framework evaluates each pipeline component's contribution with Wilcoxon signed-rank tests and 5-fold cross-validation. The platform includes a Neo4j knowledge graph for entity relationships, 3-layer security defense (input sanitization + zero trust + output validation), circuit breaker resilience with 4-level graceful degradation, and CI/CD quality gates enforcing RAGAS metric thresholds.
 
-- **Intelligent Q&A** — Ask questions about contracts with source citations
-- **Hybrid Retrieval** — Vector (ChromaDB) + BM25 keyword search with RRF fusion
-- **Cross-Encoder Reranking** — ms-marco-MiniLM-L-6-v2 for precision
-- **Self-RAG Filtering** — LLM-based relevance verification before generation
-- **Cross-Contract Comparison** — Compare terms across multiple suppliers
-- **Compliance Dashboard** — Automated mandatory clause verification with risk scoring
-- **Knowledge Graph (GraphRAG)** — Neo4j-powered entity relationship exploration
-- **RAGAS Evaluation** — Quantitative RAG quality assessment with quality gates
-- **Ablation Study** — 6-layer progressive pipeline analysis with statistical significance testing
-- **Security Architecture** — 3-layer prompt injection defense + Zero Trust access control
-
-## Tech Stack
-
-| Component | Technology |
-|-----------|-----------|
-| LLM | OpenAI GPT-4o |
-| Embedding | text-embedding-3-small (1536-dim) |
-| Vector DB | ChromaDB (local) |
-| Keyword Search | BM25 (rank_bm25) |
-| Re-ranking | cross-encoder/ms-marco-MiniLM-L-6-v2 |
-| RAG Framework | LangChain |
-| Knowledge Graph | Neo4j |
-| Document Parsing | PyMuPDF4LLM + pdfplumber + python-docx + Docling (optional) |
-| Evaluation | RAGAS + Wilcoxon signed-rank test |
-| Statistical | scipy (ablation study, 5-fold CV) |
-| Security | 3-layer defense (input/context/output) |
-| Frontend | Streamlit |
-
-## Quick Start
-
-```bash
-# 1. Install dependencies
-pip install -r requirements.txt
-
-# 2. Configure environment
-cp .env.example .env
-# Edit .env with your OpenAI API key
-
-# 3. One-click demo setup (generate contracts + build index)
-python scripts/seed_demo.py
-
-# 4. Launch the app
-streamlit run contractiq/ui/app.py
-```
-
-## Docker
-
-```bash
-docker compose up --build
-```
-
-## CLI Scripts
-
-```bash
-python scripts/generate_contracts.py   # Generate 20 sample contracts
-python scripts/build_index.py          # Build vector + BM25 index
-python scripts/build_graph.py          # Build Neo4j knowledge graph
-python scripts/run_evaluation.py       # Run RAGAS evaluation
-python scripts/seed_demo.py            # One-click demo setup
-```
-
-## Testing
-
-```bash
-pytest tests/ -v --cov=contractiq      # Full test suite (80+ tests)
-pytest tests/test_ablation.py -v       # Ablation study tests
-pytest tests/test_security.py -v       # Security tests
-pytest tests/test_resilience.py -v     # Resilience tests
-pytest tests/test_property_based.py -v # Property-based tests (Hypothesis)
-```
+---
 
 ## Architecture
 
@@ -125,7 +49,26 @@ Query Rewriter --> Multi-Query Decomposer
                     Answer + Sources
 ```
 
-## Ablation Study (v8.0)
+---
+
+## Features
+
+- **Intelligent Q&A** — Ask questions about contracts with source citations
+- **Hybrid Retrieval** — Vector (ChromaDB) + BM25 keyword search with RRF fusion
+- **Cross-Encoder Reranking** — ms-marco-MiniLM-L-6-v2 for precision
+- **Self-RAG Filtering** — LLM-based relevance verification before generation
+- **Cross-Contract Comparison** — Compare terms across multiple suppliers
+- **Compliance Dashboard** — Automated mandatory clause verification with risk scoring
+- **Knowledge Graph (GraphRAG)** — Neo4j-powered entity relationship exploration
+- **RAGAS Evaluation** — Quantitative RAG quality assessment with quality gates
+- **6-Layer Ablation Study** — Progressive pipeline analysis with Wilcoxon signed-rank tests and 5-fold CV
+- **3-Layer Security** — Input sanitization + context isolation (Zero Trust) + output validation
+- **Circuit Breaker Resilience** — 4-level graceful degradation (FULL → LLM_PARTIAL → RULE_BASED → HUMAN)
+- **Docling Multi-Format** — IBM Research-grade document parsing (PDF/DOCX/PPTX/HTML/images)
+
+---
+
+## Ablation Study
 
 The 6-layer ablation framework evaluates each pipeline component's contribution:
 
@@ -140,7 +83,59 @@ The 6-layer ablation framework evaluates each pipeline component's contribution:
 
 Statistical validation: Wilcoxon signed-rank test (alpha=0.05) between adjacent layers, 5-fold cross-validation for variance estimation, and Occam's razor elbow analysis for optimal complexity selection.
 
-## Security Architecture (v9.0)
+---
+
+## Quality Gate
+
+CI/CD quality gate enforces minimum RAGAS metrics:
+
+| Metric | Threshold |
+|--------|-----------|
+| Faithfulness | >= 0.85 |
+| Answer Relevancy | >= 0.80 |
+| Context Precision | >= 0.75 |
+| Context Recall | >= 0.80 |
+
+---
+
+## Quick Start
+
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Configure environment
+cp .env.example .env
+# Edit .env with your OpenAI API key
+
+# 3. One-click demo setup (generate contracts + build index)
+python scripts/seed_demo.py
+
+# 4. Launch the app
+streamlit run contractiq/ui/app.py
+```
+
+### Docker
+
+```bash
+docker compose up --build
+```
+
+---
+
+## Technical Approach
+
+### Hybrid Retrieval Pipeline
+
+The retrieval pipeline combines three search strategies with Reciprocal Rank Fusion:
+
+1. **Vector Search (ChromaDB)** — text-embedding-3-small (1536-dim) for semantic similarity
+2. **BM25 Keyword Search** — rank_bm25 for exact term matching
+3. **RRF Fusion** — Reciprocal rank fusion merges results from both strategies
+4. **Cross-Encoder Reranker** — ms-marco-MiniLM-L-6-v2 re-scores top candidates for precision
+5. **Self-RAG Filter** — LLM-based relevance verification with keyword fallback removes irrelevant chunks
+
+### Security Architecture — 3-Layer Defense
 
 ```
 Layer 1: Input Sanitization
@@ -159,7 +154,7 @@ Layer 3: Output Validation
   - No-access phrase filtering
 ```
 
-## Resilience (v6.0)
+### Resilience — Circuit Breaker + Graceful Degradation
 
 ```
 Circuit Breaker: CLOSED --> OPEN --> HALF_OPEN --> CLOSED
@@ -172,16 +167,61 @@ Graceful Degradation: FULL --> LLM_PARTIAL --> RULE_BASED --> HUMAN
   - Per-level behavior adaptation
 ```
 
-## Quality Gate (v6.0)
+---
 
-CI/CD quality gate enforces minimum RAGAS metrics:
+## Project Structure
 
-| Metric | Threshold |
-|--------|-----------|
-| Faithfulness | >= 0.85 |
-| Answer Relevancy | >= 0.80 |
-| Context Precision | >= 0.75 |
-| Context Recall | >= 0.80 |
+```
+ContractIQ/
+├── contractiq/
+│   ├── parsing/                       # Document parsers (PDF, DOCX, Docling) + chunking
+│   ├── indexing/                       # ChromaDB vector store + BM25 index
+│   ├── retrieval/                      # Hybrid retriever, reranker, query rewriter, Self-RAG
+│   ├── generation/                     # LLM client, QA/comparison/compliance chains
+│   ├── compliance/                     # Clause registry + compliance checker + report
+│   ├── graph/                          # Neo4j client, graph builder, GraphRAG retriever
+│   ├── evaluation/                     # RAGAS evaluator, golden dataset (55 Q), ablation
+│   ├── security/                       # Input sanitizer, output validator, access control
+│   ├── ui/                             # Streamlit app with 6 pages
+│   └── resilience.py                   # Circuit breaker + graceful degradation
+├── config/
+│   ├── graph_schema.yaml               # Neo4j graph schema
+│   └── mandatory_clauses.yaml          # Compliance clause definitions
+├── tests/                              # 80+ tests across 15 test files
+├── scripts/                            # CLI tools (seed, build, evaluate)
+├── docs/                               # ADR + reproducibility docs
+├── Dockerfile
+├── docker-compose.yml
+└── requirements.txt
+```
+
+---
+
+## CLI Scripts
+
+```bash
+python scripts/generate_contracts.py   # Generate 20 sample contracts
+python scripts/build_index.py          # Build vector + BM25 index
+python scripts/build_graph.py          # Build Neo4j knowledge graph
+python scripts/run_evaluation.py       # Run RAGAS evaluation
+python scripts/seed_demo.py            # One-click demo setup
+```
+
+---
+
+## Testing
+
+**80+ tests** across 15 test files:
+
+```bash
+pytest tests/ -v --cov=contractiq      # Full test suite
+pytest tests/test_ablation.py -v       # Ablation study tests
+pytest tests/test_security.py -v       # Security tests
+pytest tests/test_resilience.py -v     # Resilience tests
+pytest tests/test_property_based.py -v # Property-based tests (Hypothesis)
+```
+
+---
 
 ## Neo4j Setup (Optional)
 
@@ -191,6 +231,38 @@ docker run -d -p 7474:7474 -p 7687:7687 \
   neo4j:latest
 ```
 
+---
+
+## Tech Stack
+
+| Layer | Technologies |
+|-------|-------------|
+| **LLM** | OpenAI GPT-4o |
+| **Embedding** | text-embedding-3-small (1536-dim) |
+| **Vector DB** | ChromaDB (local) |
+| **Keyword Search** | BM25 (rank_bm25) |
+| **Re-ranking** | cross-encoder/ms-marco-MiniLM-L-6-v2 |
+| **RAG Framework** | LangChain |
+| **Knowledge Graph** | Neo4j |
+| **Document Parsing** | PyMuPDF4LLM, pdfplumber, python-docx, Docling (optional) |
+| **Evaluation** | RAGAS, Wilcoxon signed-rank test, scipy (5-fold CV) |
+| **Security** | 3-layer defense (input/context/output) |
+| **Frontend** | Streamlit |
+| **Infrastructure** | Docker, docker-compose |
+| **Testing** | pytest, Hypothesis (property-based) |
+
+---
+
 ## License
 
 MIT
+
+---
+
+<div align="center">
+
+**Hybrid RAG · 6-Layer Ablation · 3-Layer Security · Zero Trust**
+
+*Built with statistical rigor. Designed for contract intelligence.*
+
+</div>
