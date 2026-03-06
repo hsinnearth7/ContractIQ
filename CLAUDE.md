@@ -40,6 +40,12 @@ All settings via `CIQ_` env prefix or `.env` file. Key settings:
 - `CIQ_GATE_FAITHFULNESS`: Quality gate threshold (default: 0.85)
 - `CIQ_ENABLE_INPUT_SANITIZATION`: Security layer 1 (default: true)
 
+## Development Guidelines
+- After editing Python files, verify syntax with `python -m py_compile <file>`.
+- Run `pytest tests/ -v` after code changes, not as a final step.
+- Test all 6 Streamlit UI pages render without errors after changes.
+- Check for scalar vs array type mismatches in data processing code.
+
 ## Testing
 ```bash
 pytest tests/ -v                       # All tests

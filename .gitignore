@@ -48,6 +48,8 @@ htmlcov/
 demo/screenshots/
 demo/contracts/
 scripts/capture_screenshots.py
+architecture-diagrams/
+node_modules/
 
 # Personal docs
 *.docx
